@@ -22,14 +22,12 @@ def main():
             command_func(command_args)
 
 
-def _exit(*args):
-    print(args)
-
+def _exit(args:list[str]):
     exit_status = int(args[1])
-    sys.exit(0)
+    sys.exit(exit_status)
 
 
-def _echo(*args):
+def _echo(args:list[str]):
     print(' '.join(args[1:]))
 
 
