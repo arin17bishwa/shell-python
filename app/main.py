@@ -19,12 +19,13 @@ def main():
         if not command_func:
             print(f"{command}: command not found")
         else:
-            command_func()
+            command_func(command_args)
 
 
 def _exit(*args):
-    exit_status = int(args[1])
     print(args)
+
+    exit_status = int(args[1])
     sys.exit(0)
 
 
