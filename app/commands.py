@@ -30,8 +30,13 @@ def _type(args: list[str]):
         print(f'{query}: not found')
 
 
+def _pwd(*args):
+    print(os.getcwd())
+
+
 COMMAND_MAPPING: dict = {
     'echo': _echo,
     'exit': _exit,
     'type': _type,
+    'pwd': _pwd,
 }

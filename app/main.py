@@ -18,7 +18,6 @@ def main():
             command_func(command_args)
         elif _get_command_path(command):
             execute_file(command_args)
-
         else:
             print(f"{command}: command not found")
 
