@@ -1,4 +1,6 @@
+import os
 import sys
+from functools import lru_cache
 
 
 def _exit(args: list[str]):
@@ -11,10 +13,19 @@ def _echo(args: list[str]):
 
 
 def _type(args: list[str]):
+    @lru_cache(maxsize=100)
+    def _get_command_path(q: str) -> str:
+        for directory_path in os.environ.get('PATH').split(os.pathsep):
+            if os.path.exists(directory_path) and (q in os.listdir(directory_path)):
+                return os.path.join(directory_path, q)
+        return ''
+
     query = args[1]
-    # print(COMMAND_MAPPING)
+
     if query in COMMAND_MAPPING:
         print(f'{query} is a shell builtin')
+    elif _get_command_path(query):
+        print(f'{query} is {_get_command_path(query)}')
     else:
         print(f'{query}: not found')
 
