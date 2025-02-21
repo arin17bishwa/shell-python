@@ -1,4 +1,5 @@
 import os
+import subprocess
 import sys
 from functools import lru_cache
 from pathlib import Path
@@ -44,6 +45,10 @@ def _cd(args: list[str]):
         return
 
     os.chdir(arg_path)
+
+
+def _cat(args: list[str]):
+    _ = subprocess.run(args)
 
 
 COMMAND_MAPPING: dict = {
