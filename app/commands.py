@@ -1,6 +1,7 @@
 import os
 import sys
 from functools import lru_cache
+from pathlib import Path
 
 
 def _exit(args: list[str]):
@@ -36,9 +37,12 @@ def _pwd(*args):
 
 def _cd(args: list[str]):
     arg_path = args[1]
+    if arg_path == '~':
+        arg_path = str(Path.home())
     if not os.path.exists(arg_path):
         print(f'cd: {arg_path}: No such file or directory')
         return
+
     os.chdir(arg_path)
 
 
