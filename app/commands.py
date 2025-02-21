@@ -47,5 +47,5 @@ COMMAND_MAPPING: dict = {
     'exit': _exit,
     'type': _type,
     'pwd': _pwd,
-    'cd': _cd
+    'cd': _cd,
 }
