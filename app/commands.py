@@ -34,9 +34,18 @@ def _pwd(*args):
     print(os.getcwd())
 
 
+def _cd(args: list[str]):
+    arg_path = args[1]
+    if not os.path.exists(arg_path):
+        print(f'cd: {arg_path}: No such file or directory')
+        return
+    os.chdir(arg_path)
+
+
 COMMAND_MAPPING: dict = {
     'echo': _echo,
     'exit': _exit,
     'type': _type,
     'pwd': _pwd,
+    'cd': _cd
 }
